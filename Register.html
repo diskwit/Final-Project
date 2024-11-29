@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Form in HTML and CSS | Timothy James S Oriola</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    </head>
+    
+    <body  class="Login">
+    
+        <div class="wrapper">
+            <form id="registerform">
+    
+                <h1>Register</h1>
+                <p>Please input the required details. If you already have an account 
+                    then please click the Login link.
+                </p>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" id="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+    
+                <div class="input-box">
+                    <input type="text" placeholder="Re-enter Username" id="reenterUsername" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Password" id="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+    
+                <div class="input-box">
+                    <input type="password" placeholder="Re-enter Password" id="reenterPassword" required>
+        
+                </div>
+
+                <button type="submit" class="btn">Register</button>
+    
+                <div class="register-link">
+                    <p class="p2">Already have an account? <a href="Index.html">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            const registerForm = document.getElementById("registerform");
+            const usernameInput = document.getElementById("Username");
+            const reenterUsernameInput = document.getElementById("reenterUsername");
+            const passwordInput = document.getElementById("Password");
+            const reenterPasswordInput = document.getElementById("reenterPassword");
+
+            registerForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            
+            if (usernameInput.value !== reenterUsernameInput.value){
+                alert("Usernames do not match");
+                return;
+            }
+
+            if (passwordInput.value!== reenterPasswordInput.value){
+                alert("Passwords do not match");
+                return;
+            }
+
+            localStorage.setItem("Username",usernameInput.value);
+            localStorage.setItem("Password",passwordInput.value);
+
+            alert("Registration successful! You can now Login.");
+
+                usernameInput.value = "";
+                reenterUsernameInput.value = "";
+                passwordInput.value = "";
+                reenterPasswordInput.value = "";
+
+
+            window.location.href = "Index.html";
+        })
+        </script>
+        </body>
+    </html>
+
